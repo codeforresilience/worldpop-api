@@ -11,7 +11,41 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   var json = JSON.parse('{"count":11,"totalPopulation":12043545.114792835,"totalArea":3576039.0251903664,"polygonArea":3548725.419122968}');
-  response.json(json);
+  
+  var worldpop = require('worldpop')
+  var accessToken = 'pk.eyJ1IjoiZGV2c2VlZCIsImEiOiJWQlQ1NlNVIn0.IT_b8KVeZDvOFZLWF7DpvQ'
+
+  var tilesUri = 'tilejson+http://api.tiles.mapbox.com/v4/' + 'devseed.isnka9k9.json?access_token=' + accessToken;
+  var tileLayer = 'population';
+
+  layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[32.61943817138672,0.4433110827898624],[32.6154899597168,0.4433110827898624],[32.6154899597168,0.4398779572213478],[32.61943817138672,0.44082206691065606],[32.61943817138672,0.4433110827898624]]]}}
+
+  var defaults = {
+	  longitude: 5.625,
+	  latitude: 6.6646,
+	  zoom: 3
+   };
+
+   var result = worldpop({
+	  source: tilesUri,
+	  layer: tileLayer,
+	  polygon: layer,
+	   
+	  density: function (feat) { 
+	  return feat.properties.density} 
+	  },
+
+	  function done (err, results) {
+
+	  response.json(results);
+
+	  document.write(JSON.stringify(results));
+	  store = JSON.stringify(results);
+
+	  console.log("results"+results)
+	  
+	  return results
+   })  
 });
 
 app.listen(app.get('port'), function() {
