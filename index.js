@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(request, response) {
+app.post('/', function(request, response) {
   var json = JSON.parse('{"count":11,"totalPopulation":12043545.114792835,"totalArea":3576039.0251903664,"polygonArea":3548725.419122968}');
   
   var worldpop = require('worldpop')
@@ -18,7 +18,7 @@ app.get('/', function(request, response) {
   var tilesUri = 'tilejson+http://api.tiles.mapbox.com/v4/' + 'devseed.isnka9k9.json?access_token=' + accessToken;
   var tileLayer = 'population';
 
-  var coordinates = request.query.coordinates
+  var coordinates = request.body.coordinates
 
   layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates": coordinates }}
 
