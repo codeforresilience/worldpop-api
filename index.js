@@ -18,7 +18,8 @@ app.get('/', function(request, response) {
   var tilesUri = 'tilejson+http://api.tiles.mapbox.com/v4/' + 'devseed.isnka9k9.json?access_token=' + accessToken;
   var tileLayer = 'population';
 
-  layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[32.7802848815918,0.5343741191764122],[32.78989791870117,0.534030811344804],[32.78989791870117,0.5297394618360466],[32.780113220214844,0.5288811915769153]]]}}
+  layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon",
+  "coordinates":[[[32.7802848815918,0.5343741191764122],[32.78989791870117,0.534030811344804],[32.78989791870117,0.5297394618360466],[32.780113220214844,0.5288811915769153],[32.7802848815918,0.5343741191764122]]]}}
 
   var defaults = {
 	  longitude: 5.625,
