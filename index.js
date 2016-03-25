@@ -40,13 +40,6 @@ app.get('/', function(request, response) {
 	  function done (err, results) {
 
 	  response.json(results);
-
-	  document.write(JSON.stringify(results));
-	  store = JSON.stringify(results);
-
-	  console.log("results"+results)
-	  
-	  return results
    })  
 });
 
