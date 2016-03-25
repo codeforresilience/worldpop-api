@@ -30,7 +30,8 @@ app.get('/', function(request, response) {
 	  source: tilesUri,
 	  layer: tileLayer,
 	  polygon: layer,
-	   
+	  min_zoom:11,
+	  max_zoom:11, 
 	  density: function (feat) { 
 	  return feat.properties.density} 
 	  },
