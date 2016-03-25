@@ -18,7 +18,7 @@ app.post('/', function(request, response) {
   var tilesUri = 'tilejson+http://api.tiles.mapbox.com/v4/' + 'devseed.isnka9k9.json?access_token=' + accessToken;
   var tileLayer = 'population';
 
-  var coordinates = request.body.coordinates
+  var coordinates = request.param('coordinates')
 
   layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates": coordinates }}
 
