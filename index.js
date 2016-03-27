@@ -27,7 +27,7 @@ app.post('/api',upload.array(), function(request, response, next) {
 
   var coordinates = request.body.coordinates
 
-  layer = {"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates": coordinates }}
+  layer = '{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":'+ coordinates+ '}}'
 
   var defaults = {
 	  longitude: 5.625,
