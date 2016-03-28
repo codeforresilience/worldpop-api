@@ -27,13 +27,9 @@ app.post('/api',upload.array(), function(request, response, next) {
 
   var coordinates = request.body.coordinates
 
-  console.log(coordinates)
-
   layer = '{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":'+ coordinates+ '}}'
 
-  console.log(layer)
   layer = JSON.parse(layer)
-  console.log(layer)
 
   var defaults = {
 	  longitude: 5.625,
@@ -59,12 +55,11 @@ app.post('/api',upload.array(), function(request, response, next) {
 
 app.post('/test',upload.array(), function(request, response, next) {
 
-
   var coordinates = request.body.coordinates
   response.end("It is Working")
 
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+  console.log('Application is running on port', app.get('port'));
 });
